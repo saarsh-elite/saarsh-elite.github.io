@@ -879,7 +879,7 @@ footer a:hover{color:var(--gold-2)}
     var v = vp(), t = tm/1000;
     // sky glow
     var g = cx.createRadialGradient(v.x, v.y, 10, v.x, v.y, Math.max(W,H)*.7);
-    g.addColorStop(0,'rgba(216,195,160,.55)'); g.addColorStop(.4,'rgba(216,195,160,.12)'); g.addColorStop(1,'rgba(246,242,236,0)');
+    g.addColorStop(0,'rgba(214,200,172,.38)'); g.addColorStop(.4,'rgba(214,200,172,.08)'); g.addColorStop(1,'rgba(246,242,236,0)');
     cx.fillStyle = g; cx.fillRect(0,0,W,H);
     // city bokeh
     bokeh.forEach(function(b){ var a = b.a*(.6+.4*Math.sin(t*b.s+b.ph)); cx.beginPath(); cx.fillStyle='rgba('+b.c+','+a+')'; cx.arc(b.x,b.y,b.r,0,7); cx.fill(); });
@@ -902,7 +902,7 @@ footer a:hover{color:var(--gold-2)}
       if(!reduce) c.z -= c.sp * (c.lane>0 ? 1 : -1) * (c.lane>0?1:.0) + (c.lane<0 ? -c.sp*.8 : 0);
       if(c.lane>0 && c.z < 0){ c.z = 1; } if(c.lane<0 && c.z > 1){ c.z = 0; }
       var side = c.lane*(.28 + c.off), p = proj(c.z, side, v), q = proj(Math.min(1,c.z+.06), side, v);
-      var col = c.lane>0 ? '176,141,87' : '140,50,45', w = .8 + p.s*3.2;
+      var col = c.lane>0 ? '176,141,87' : '20,20,20', w = .8 + p.s*3.2;
       var lg = cx.createLinearGradient(p.x,p.y,q.x,q.y); lg.addColorStop(0,'rgba('+col+','+(.9*p.s+.1)+')'); lg.addColorStop(1,'rgba('+col+',0)');
       cx.strokeStyle = lg; cx.lineWidth = w; cx.lineCap='round';
       cx.beginPath(); cx.moveTo(p.x - w*.9, p.y); cx.lineTo(q.x - w*.4, q.y); cx.moveTo(p.x + w*.9, p.y); cx.lineTo(q.x + w*.4, q.y); cx.stroke();
