@@ -409,7 +409,7 @@ footer a:hover{color:var(--gold-2)}
     <small>Ride confirmed</small><b>Arriving in 4 min</b>
     <div class="row"><span class="av">SE</span><span>Your chauffeur<br>Police verified · In uniform</span></div>
   </div>
-  <div class="float glass f2" aria-hidden="true"><i>✓</i><span>Reached home safe 🤍</span></div>
+  <div class="float glass f2" aria-hidden="true"><i>✓</i><span>Reached home safe.</span></div>
   <div class="float glass f3" aria-hidden="true">Ride PIN <em>4 7 2 9</em></div>
   <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
 </section>
@@ -526,7 +526,7 @@ footer a:hover{color:var(--gold-2)}
             <small>Arrived</small><h4>Home, safe.</h4>
             <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
             <p class="c-mid">Your chauffeur is waiting<br>until you are inside.</p>
-            <div class="bub">Reached home safe 🤍</div>
+            <div class="bub">Reached home safe.</div>
           </div>
         </div></div>
       </div>
@@ -551,7 +551,7 @@ footer a:hover{color:var(--gold-2)}
       <div class="msg out">Calling again…</div>
       <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="msg in">Coming! Sorry, we were asleep.</div>
-      <div class="msg out">Home, finally 🤍</div>
+      <div class="msg out">Home, finally.</div>
     </div>
     <div class="story-text" data-reveal>
       <span class="eyebrow">Our story</span>
@@ -739,7 +739,7 @@ footer a:hover{color:var(--gold-2)}
   function finishLoad(){ loader.classList.add('done'); document.body.classList.add('ready'); }
   if(reduce){ finishLoad(); }
   else{
-    setTimeout(function(){ ldText.style.transition='opacity .3s'; ldText.style.opacity=0; setTimeout(function(){ ldText.textContent='Reached home safe 🤍'; ldText.style.opacity=1; },300); },900);
+    setTimeout(function(){ ldText.style.transition='opacity .3s'; ldText.style.opacity=0; setTimeout(function(){ ldText.textContent='Reached home safe.'; ldText.style.opacity=1; },300); },900);
     setTimeout(finishLoad, 2100);
     loader.addEventListener('click', finishLoad);
   }
