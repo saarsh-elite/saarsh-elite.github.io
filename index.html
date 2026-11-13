@@ -525,11 +525,13 @@ img{font-size:0;color:transparent}
 .svc-grid{grid-template-columns:repeat(4,1fr)}
 .svc .tagline.every{background:var(--black);color:#fff}
 @media (max-width:640px){
-  .hero{min-height:100svh;align-items:flex-end}
-  .hero-video{object-position:58% 50%}
+  .hero{min-height:0;display:block;background:#0B0B0C}
+  .hero-video{position:absolute;top:0;left:0;right:0;bottom:auto;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 50%}
+  .hero::after{background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,0) 18%,rgba(11,11,12,0) calc(62.5vw - 90px),#0B0B0C 62.5vw,#0B0B0C 100%)}
   .hero h1{font-size:2.35rem;line-height:1.04}
   .hero .lede{font-size:.98rem}
-  .hero .wrap{padding-block:96px 24px}
+  .hero .wrap{padding-block:calc(62.5vw - 10px) 28px}
+  .hero .badge{margin-top:-6px}
   .vid-band{min-height:420px}
   .vid-band video{object-position:50% 50%}
   .classes .rv,.svc figure{aspect-ratio:16/10}
