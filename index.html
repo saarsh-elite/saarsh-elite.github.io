@@ -525,6 +525,9 @@ img{font-size:0;color:transparent}
 .vid-band p{color:rgba(255,255,255,.82)}
 .svc-grid{grid-template-columns:repeat(4,1fr)}
 .svc .tagline.every{background:var(--black);color:#fff}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+input,textarea,.mail,#privacy p,#privacy li{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+img{-webkit-user-drag:none;pointer-events:auto}
 .tagline-k{margin:-8px 0 -10px;font-size:.8rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-2)}
 .nav a{white-space:nowrap}.nav{gap:22px}
 @media (max-width:1240px){.nav,.head-cta{display:none}#menuBtn{display:grid}}
@@ -1109,6 +1112,25 @@ img{font-size:0;color:transparent}
   function kick(){ $$('video').forEach(function(v){ if(v.dataset.src && !v.src && v.getBoundingClientRect().top < innerHeight*1.5) v.src = v.dataset.src; if(v.paused && v.src){ var r = v.getBoundingClientRect(); if(r.bottom > 0 && r.top < innerHeight){ var p = v.play(); if(p && p.catch) p.catch(function(){}); } } }); }
   ['touchstart','click','scroll'].forEach(function(ev){ addEventListener(ev, kick, {passive:true}); });
   setTimeout(kick, 800);
+
+
+  /* Scroll music: soft music-box notes as you scroll (after the first tap unlocks sound) */
+  (function(){
+    var notes = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66, 1318.5], acc = 0, lastY = scrollY, lastT = 0, idx = 0, dir = 1;
+    addEventListener('scroll', function(){
+      var y = scrollY, d = y - lastY; lastY = y; acc += Math.abs(d);
+      var now = performance.now();
+      if(acc > 140 && now - lastT > 110 && unlocked && Snd.on){
+        acc = 0; lastT = now; dir = d >= 0 ? 1 : -1;
+        idx = (idx + dir + notes.length) % notes.length;
+        var f = notes[idx]; tone(f, .5, 'sine', .022); tone(f*2, .25, 'sine', .006, .01);
+      }
+    }, {passive:true});
+    /* a gentle hint so phone users know to tap once for sound */
+    var hinted = false;
+    function hint(){ if(hinted || unlocked || !Snd.on) return; hinted = true; toast('Tap anywhere to turn on sound'); }
+    setTimeout(hint, 2500);
+  })();
 
   /* Photo reveal: curtain wipes up as each photo scrolls into view */
   var rio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } }); }, {threshold:.15});
