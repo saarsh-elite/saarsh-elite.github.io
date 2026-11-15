@@ -514,6 +514,13 @@ img{font-size:0;color:transparent}
   .rv::after{display:none}.rv img,.slides img{transform:none}
 }
 
+/* mobile menu: scrollable, compact */
+.menu{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;justify-content:flex-start}
+.menu .btn{margin-top:22px;flex:none}
+@media (max-width:640px){.menu{padding:84px 22px 28px}.menu a{font-size:1.35rem;padding:13px 0}}
+.menu a.btn{justify-content:center;padding:0 26px;font-size:1rem;border-bottom:0;letter-spacing:0}
+.menu a.btn::after{content:none}
+
 /* hero video */
 .hero-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
 .hero .slides{display:none}
