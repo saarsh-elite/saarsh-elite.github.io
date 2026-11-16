@@ -521,6 +521,22 @@ img{font-size:0;color:transparent}
 .menu a.btn{justify-content:center;padding:0 26px;font-size:1rem;border-bottom:0;letter-spacing:0}
 .menu a.btn::after{content:none}
 
+/* header options: tap / hover animation */
+header a,header button,.menu a,.menu button{-webkit-tap-highlight-color:transparent}
+.nav a::before{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;border-radius:2px;background:var(--bronze);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.nav a:hover::before,.nav a.tap::before{transform:scaleX(1)}
+.nav a,.head-cta,#menuBtn,.brand{transition:transform .18s ease,opacity .2s}
+.nav a.tap,.head-cta.tap,#menuBtn.tap,.brand.tap{transform:scale(.92)}
+.menu a{transition:transform .25s ease,color .25s ease,background-color .25s ease,padding-left .25s ease;border-radius:10px}
+.menu a::after{transition:transform .25s ease}
+.menu a:not(.btn).tap{color:var(--bronze);padding-left:12px;background:rgba(176,125,82,.09)}
+.menu a:not(.btn).tap::after{transform:translateX(6px)}
+.menu a.btn.tap{transform:scale(.95)}
+.menu.open a{animation:menuIn .5s cubic-bezier(.2,.8,.2,1) both}
+.menu.open a:nth-of-type(2){animation-delay:.04s}.menu.open a:nth-of-type(3){animation-delay:.08s}.menu.open a:nth-of-type(4){animation-delay:.12s}.menu.open a:nth-of-type(5){animation-delay:.16s}.menu.open a:nth-of-type(6){animation-delay:.2s}.menu.open a:nth-of-type(7){animation-delay:.24s}.menu.open a:nth-of-type(8){animation-delay:.28s}.menu.open a:nth-of-type(9){animation-delay:.32s}.menu.open a:nth-of-type(n+10){animation-delay:.36s}
+@keyframes menuIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.menu.open a{animation:none}.nav a::before,.menu a{transition:none}}
+
 /* hero video */
 .hero-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
 .hero .slides{display:none}
@@ -1161,6 +1177,7 @@ img{-webkit-user-drag:none;pointer-events:auto}
   addEventListener('keydown', function(e){ if(e.key==='Escape'){ if(priv.classList.contains('open')) closePriv(); else if(menu.classList.contains('open')) setMenu(false); } });
   if(location.hash==='#privacy'){ priv.classList.add('open'); document.body.style.overflow='hidden'; }
 })();
+(function(){var sel='.nav a,.head-cta,#menuBtn,.brand,.menu a';document.addEventListener('pointerdown',function(e){var t=e.target.closest&&e.target.closest(sel);if(!t)return;t.classList.add('tap');setTimeout(function(){t.classList.remove('tap')},420);},{passive:true});})();
 
 </script>
 </body>
